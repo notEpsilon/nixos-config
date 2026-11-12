@@ -96,11 +96,21 @@
     settings = {
       theme = "dark";
       includeCoAuthoredBy = false;
+
+      extraKnownMarketplaces = {
+        ponytail.source = {
+          source = "github";
+          repo = "DietrichGebert/ponytail";
+        };
+      };
+
+      enabledPlugins."ponytail@ponytail" = true;
     };
   };
 
   services.flameshot = {
     enable = true;
+
     settings = {
       General = {
         useGrimAdapter = true;
