@@ -18,6 +18,7 @@ return {
 
       Map("n", "<leader>ff", require("fzf-lua").files)
       Map("n", "<leader>fg", require("fzf-lua").live_grep)
+      Map("n", "<leader>gs", require("fzf-lua").git_status)
     end,
   },
 }
