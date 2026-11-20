@@ -67,6 +67,36 @@
     enableZshIntegration = true;
   };
 
+  programs.tmux = {
+    enable = true;
+    terminal = "tmux-256color";
+    prefix = "C-a";
+    mouse = true;
+    keyMode = "vi";
+    baseIndex = 1;
+    escapeTime = 0;
+    historyLimit = 50000;
+    focusEvents = true;
+    clock24 = true;
+    extraConfig = ''
+      set -as terminal-features ",foot*:RGB"
+      set -g renumber-windows on
+
+      # open splits/windows in the current pane's directory
+      bind '"' split-window -v -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+      bind c new-window -c "#{pane_current_path}"
+
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
+
+      bind -T copy-mode-vi v send -X begin-selection
+      bind r source-file ~/.config/tmux/tmux.conf \; display "reloaded"
+    '';
+  };
+
   programs.zsh = {
     enable = true;
     history = {
