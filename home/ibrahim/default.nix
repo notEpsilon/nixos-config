@@ -6,6 +6,10 @@
 }:
 
 {
+  imports = [
+    inputs.direnv-instant.homeModules.direnv-instant
+  ];
+
   home.stateVersion = "26.05";
   xdg = {
     enable = true;
@@ -43,6 +47,11 @@
   ];
 
   programs.direnv.enable = true;
+
+  programs.direnv-instant = {
+    enable = true;
+    settings.mux_delay = 1;
+  };
 
   programs.bat = {
     enable = true;
